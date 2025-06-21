@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Heart, Menu, Search, ShoppingCart, User, X } from "lucide-react";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  
+  // HandleScroll for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div>
-      <header className="bg-white shadow-lg sticky top-0 z-50">
+      <header
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrollPosition > 50
+            ? "bg-white/40 backdrop-blur-sm shadow-lg"
+            : "bg-white shadow-lg shadow-gray-300"
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              <span className="text-xl font-bold text-gray-800">StyleHub</span>
+              <span className="text-xl font-bold text-gray-800">Shopzy</span>
             </div>
 
             {/* Desktop Navigation */}

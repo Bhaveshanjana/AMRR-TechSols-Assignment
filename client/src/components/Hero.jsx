@@ -1,7 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Hero () {
+export default function Hero() {
   return (
     <div>
       <section className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white">
@@ -18,12 +19,18 @@ export default function Hero () {
               Quality meets style in every piece we offer.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center justify-center">
+              <Link
+                to={"/view-items"}
+                className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 flex items-center justify-center duration-300 shadow-xl"
+              >
                 Shop Now <ArrowRight className="ml-2 w-5 h-5" />
-              </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all">
+              </Link>
+              <Link
+                to={"/view-items"}
+                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-xl shadow-black/30 hover:scale-105"
+              >
                 View Collection
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -31,4 +38,4 @@ export default function Hero () {
       </section>
     </div>
   );
-};
+}

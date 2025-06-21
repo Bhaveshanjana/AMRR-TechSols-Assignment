@@ -1,14 +1,11 @@
-export default function Footer () {
+export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-gray-900 text-white py-2">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-7">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              <span className="text-xl font-bold">StyleHub</span>
+              <span className="text-xl font-bold">Shopzy</span>
             </div>
             <p className="text-gray-400 mb-4">
               Your one-stop destination for fashion, footwear, and lifestyle
@@ -91,10 +88,10 @@ export default function Footer () {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-400">
           <p>&copy; 2025 StyleHub. All rights reserved.</p>
         </div>
       </div>
     </footer>
   );
-};
+}

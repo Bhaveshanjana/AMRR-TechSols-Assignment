@@ -1,6 +1,7 @@
 import { createProductService } from "../services/product.service.js";
 import { validationResult } from "express-validator";
 import { v2 as cloudinary } from "cloudinary";
+import productModel from "../model/product.model.js";
 
 export const createProduct = async (req, res) => {
   const errors = validationResult(req);
@@ -19,7 +20,7 @@ export const createProduct = async (req, res) => {
   const { coverImage, additionalImages } = req.files;
 
   console.log(req.files);
-  
+
   const formats = ["image/png", "image/jpeg"];
 
   if (!coverImage || !additionalImages) {
@@ -94,4 +95,22 @@ export const createProduct = async (req, res) => {
   });
 
   return res.status(200).json({ product });
+};
+
+export const getProducts = async (req, res) => {
+  try {
+    const products = await productModel.find({});
+    if (products.length > 0) {
+      return res.status(200).json({ products });
+    }
+    res
+      .status(404)
+      .json({ errors: "No products found create one to show here" });
+  } catch (error) {
+    console.log(error);
+    
+    return res
+      .status(500)
+      .json({ errors: "Internal server error while getting products" });
+  }
 };

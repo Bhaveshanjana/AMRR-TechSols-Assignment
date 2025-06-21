@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { createProduct } from "./../controller/product.controller.js";
+import { createProduct, getProducts } from "./../controller/product.controller.js";
 
 const router = express.Router();
 
@@ -19,5 +19,6 @@ router.post(
   ],
   createProduct
 );
+router.get("/getProducts", getProducts)
 
 export default router;

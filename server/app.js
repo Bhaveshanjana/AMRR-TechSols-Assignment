@@ -15,6 +15,7 @@ ConnectTodb();
 
 app.use(cookieParser());
 app.use(cors());
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.use(
@@ -24,7 +25,7 @@ app.use(
   })
 );
 
-app.use("/product/create", productRouter);
+app.use("/product", productRouter);
 
 app.get("/", (req, res) => {
   res.json("hello there");
@@ -32,9 +33,9 @@ app.get("/", (req, res) => {
 
 //config the cloud for img
 cloudinary.config({
-  cloud_name: process.env.cloud_name,
-  api_key: process.env.api_key,
-  api_secret: process.env.api_secret,
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
 });
 
 export default app;
